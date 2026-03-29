@@ -15,7 +15,7 @@ class DashboardController extends Controller
             'total_products'   => Product::count(),
             'total_orders'     => Order::count(),
             'pending_orders'   => Order::where('status','pending')->count(),
-            'total_revenue'    => Order::where('status','!=','cancelled')->sum('total'),
+            'total_revenue' => Order::where('status','!=','cancelled')->sum('total_amount'),
             'low_stock'        => Product::where('stock','<=',5)->where('stock','>',0)->count(),
             'out_of_stock'     => Product::where('stock',0)->count(),
             'total_categories' => Category::count(),
